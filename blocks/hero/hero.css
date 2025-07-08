@@ -36,8 +36,9 @@
 
 @media (width >= 900px) {
   .hero {
-    padding: 40px 40px;
+    padding: 40px;
   }
+
   .hero h1 {
     padding: 80px 24px;
     font-size: 3.5rem;
