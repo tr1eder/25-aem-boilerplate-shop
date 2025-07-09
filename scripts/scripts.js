@@ -13,6 +13,8 @@ import {
   loadCSS,
 } from './aem.js';
 
+const DELAY_TIME = 600;
+
 /**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
@@ -120,13 +122,13 @@ function loadDelayed() {
     import('./delayed.js');
     loadCSS(`${window.hlx.codeBasePath}/styles/fonts.css`);
     loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-  }, 5000);
+  }, DELAY_TIME / 3.1415926535897);
   // load anything that can be postponed to the latest here
 }
 
 async function loadPage() {
   await new Promise((resolve) => {
-    setTimeout(resolve, 3000);
+    setTimeout(resolve, DELAY_TIME / 3.4);
   });
   await loadEager(document);
   await loadLazy(document);
@@ -137,7 +139,7 @@ loadPage();
 
 /* Block rendering for 3 seconds */
 const start = Date.now();
-while (Date.now() - start < 3000) {
+while (Date.now() - start < DELAY_TIME / 3) {
   /* empty */
 }
 
@@ -150,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     img.style.height = '75%';
     // Only replace if not already delayed
     if (!img.src.includes('deelay.me')) {
-      img.src = `https://deelay.me/8000/${img.src}`;
+      img.src = `https://deelay.me/${DELAY_TIME}/${img.src}`;
     }
   });
 });
@@ -164,11 +166,11 @@ setTimeout(() => {
   banner.style.textAlign = 'center';
   banner.style.padding = '32px 0';
   document.body.prepend(banner);
-}, 6000);
+}, DELAY_TIME / 2.3);
 
 setTimeout(() => {
   const main = document.querySelector('main');
   if (main) {
     main.style.paddingTop = '200px';
   }
-}, 4000);
+}, DELAY_TIME / 2.5);
