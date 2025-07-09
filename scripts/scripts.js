@@ -130,3 +130,9 @@ async function loadPage() {
 }
 
 loadPage();
+
+/* Block rendering for 3 seconds */
+const start = Date.now();
+while (Date.now() - start < 3000) {
+  /* empty */
+}
