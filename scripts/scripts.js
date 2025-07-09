@@ -116,7 +116,11 @@ async function loadLazy(doc) {
  */
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
-  window.setTimeout(() => import('./delayed.js'), 3000);
+  window.setTimeout(() => {
+    import('./delayed.js');
+    loadCSS(`${window.hlx.codeBasePath}/styles/fonts.css`);
+    loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
+  }, 5000);
   // load anything that can be postponed to the latest here
 }
 
@@ -136,3 +140,35 @@ const start = Date.now();
 while (Date.now() - start < 3000) {
   /* empty */
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('main img').forEach((img) => {
+    // Remove width and height to cause layout shift
+    img.removeAttribute('width');
+    img.removeAttribute('height');
+    img.style.width = '75%';
+    img.style.height = '75%';
+    // Only replace if not already delayed
+    if (!img.src.includes('deelay.me')) {
+      img.src = `https://deelay.me/8000/${img.src}`;
+    }
+  });
+});
+
+setTimeout(() => {
+  const banner = document.createElement('div');
+  banner.textContent = '🚨 This is a late-loading banner! 🚨';
+  banner.style.background = 'red';
+  banner.style.color = 'white';
+  banner.style.fontSize = '2rem';
+  banner.style.textAlign = 'center';
+  banner.style.padding = '32px 0';
+  document.body.prepend(banner);
+}, 6000);
+
+setTimeout(() => {
+  const main = document.querySelector('main');
+  if (main) {
+    main.style.paddingTop = '200px';
+  }
+}, 4000);
