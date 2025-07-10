@@ -13,7 +13,7 @@ import {
   loadCSS,
 } from './aem.js';
 
-const DELAY_TIME = 600;
+const DELAY_TIME = 2000;
 
 /**
  * Builds hero block and prepends to main in a new section.
