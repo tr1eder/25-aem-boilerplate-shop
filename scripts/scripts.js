@@ -48,7 +48,7 @@ const pluginContext = {
   toClassName,
 };
 
-const DELAY_TIME = 4000;
+const DELAY_TIME = 10;
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -241,17 +241,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-const banner = document.createElement('div');
-banner.textContent = '🚨 This is a late-loading banner! 🚨';
-banner.style.background = 'red';
-banner.style.color = 'white';
-banner.style.fontSize = '2rem';
-banner.style.textAlign = 'center';
-banner.style.padding = '32px 0';
-document.body.prepend(banner);
-setInterval(() => {
-  banner.style.display = banner.style.display === 'none' ? 'block' : 'none';
-}, DELAY_TIME / 10);
+// const banner = document.createElement('div');
+// banner.textContent = '🚨 This is a late-loading banner! 🚨';
+// banner.style.background = 'red';
+// banner.style.color = 'white';
+// banner.style.fontSize = '2rem';
+// banner.style.textAlign = 'center';
+// banner.style.padding = '32px 0';
+// document.body.prepend(banner);
+// setInterval(() => {
+//   banner.style.display = banner.style.display === 'none' ? 'block' : 'none';
+// }, DELAY_TIME / 10);
 
 setTimeout(() => {
   const main = document.querySelector('main');
