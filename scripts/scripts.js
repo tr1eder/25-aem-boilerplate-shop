@@ -13,7 +13,7 @@ import {
   loadCSS,
 } from './aem.js';
 
-const DELAY_TIME = 2000;
+const DELAY_TIME = 4000;
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -105,6 +105,9 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
+  await new Promise((resolve) => {
+    setTimeout(resolve, DELAY_TIME / 2.4);
+  });
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
 
@@ -128,7 +131,7 @@ function loadDelayed() {
 
 async function loadPage() {
   await new Promise((resolve) => {
-    setTimeout(resolve, DELAY_TIME / 3.4);
+    setTimeout(resolve, DELAY_TIME / 2.4);
   });
   await loadEager(document);
   await loadLazy(document);
@@ -137,9 +140,42 @@ async function loadPage() {
 
 loadPage();
 
+function acceptNode(node) {
+  // Accept only text nodes that contain at least one word character
+  return /\w/.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+}
+
+// Animate all text content word by word
+function animateTextWordByWord(root = document.body, delay = 50) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, acceptNode);
+  const textNodes = [];
+  while (walker.nextNode()) {
+    textNodes.push(walker.currentNode);
+  }
+  textNodes.forEach((node) => {
+    const words = node.nodeValue.match(/\S+|\s+/g) || [];
+    const parent = node.parentNode;
+    const span = document.createElement('span');
+    parent.replaceChild(span, node);
+    let i = 0;
+    function showNextWord() {
+      if (i < words.length) {
+        span.append(words[i]);
+        i += 1;
+        setTimeout(showNextWord, delay);
+      }
+    }
+    showNextWord();
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  animateTextWordByWord(document.body, 150);
+});
+
 /* Block rendering for 3 seconds */
 const start = Date.now();
-while (Date.now() - start < DELAY_TIME / 3) {
+while (Date.now() - start < DELAY_TIME / 1.4) {
   /* empty */
 }
 
@@ -157,20 +193,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-setTimeout(() => {
-  const banner = document.createElement('div');
-  banner.textContent = '🚨 This is a late-loading banner! 🚨';
-  banner.style.background = 'red';
-  banner.style.color = 'white';
-  banner.style.fontSize = '2rem';
-  banner.style.textAlign = 'center';
-  banner.style.padding = '32px 0';
-  document.body.prepend(banner);
-}, DELAY_TIME / 2.3);
+const banner = document.createElement('div');
+banner.textContent = '🚨 This is a late-loading banner! 🚨';
+banner.style.background = 'red';
+banner.style.color = 'white';
+banner.style.fontSize = '2rem';
+banner.style.textAlign = 'center';
+banner.style.padding = '32px 0';
+document.body.prepend(banner);
+setInterval(() => {
+  banner.style.display = banner.style.display === 'none' ? 'block' : 'none';
+}, DELAY_TIME / 10);
 
 setTimeout(() => {
   const main = document.querySelector('main');
   if (main) {
     main.style.paddingTop = '200px';
   }
-}, DELAY_TIME / 2.5);
+}, DELAY_TIME / 1.1);
