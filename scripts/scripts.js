@@ -48,7 +48,7 @@ const pluginContext = {
   toClassName,
 };
 
-const DELAY_TIME = 10;
+const DELAY_TIME = 4000;
 
 /**
  * Builds hero block and prepends to main in a new section.
