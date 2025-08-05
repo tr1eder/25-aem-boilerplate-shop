@@ -48,7 +48,7 @@ const pluginContext = {
   toClassName,
 };
 
-const DELAY_TIME = 4000;
+const DELAY_TIME = 0;
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -218,7 +218,9 @@ function animateTextWordByWord(root = document.body, delay = 50) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  animateTextWordByWord(document.body, 150);
+  if (DELAY_TIME > 1000) {
+    animateTextWordByWord(document.body, 150);
+  }
 });
 
 /* Block rendering for 3 seconds */
@@ -227,19 +229,21 @@ while (Date.now() - start < DELAY_TIME / 1.4) {
   /* empty */
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('main img').forEach((img) => {
-    // Remove width and height to cause layout shift
-    img.removeAttribute('width');
-    img.removeAttribute('height');
-    img.style.width = '75%';
-    img.style.height = '75%';
-    // Only replace if not already delayed
-    if (!img.src.includes('deelay.me')) {
-      img.src = `https://deelay.me/${DELAY_TIME}/${img.src}`;
-    }
+if (DELAY_TIME > 1000) {
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('main img').forEach((img) => {
+      // Remove width and height to cause layout shift
+      img.removeAttribute('width');
+      img.removeAttribute('height');
+      img.style.width = '75%';
+      img.style.height = '75%';
+      // Only replace if not already delayed
+      if (!img.src.includes('deelay.me')) {
+        img.src = `https://deelay.me/${DELAY_TIME}/${img.src}`;
+      }
+    });
   });
-});
+}
 
 if (DELAY_TIME > 1000) {
   const banner = document.createElement('div');
@@ -257,7 +261,7 @@ if (DELAY_TIME > 1000) {
 
 setTimeout(() => {
   const main = document.querySelector('main');
-  if (main) {
+  if (main && DELAY_TIME > 1000) {
     main.style.paddingTop = '200px';
   }
 }, DELAY_TIME / 1.1);
