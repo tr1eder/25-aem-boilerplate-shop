@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>My Wilson B - Tennis Racket Shop</title>
+  <link rel="stylesheet" href="my-wilson-b.css">
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <h1>Wilson Tennis Store</h1>
+      <nav>
+        <a href="#shop">Rack Catalog</a>
+        <a href="#checkout">Cart</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section id="hero">
+      <div class="hero-content">
+        <h2>Push Your Limits</h2>
+        <p class="subtitle">Choose the Wilson tennis racket that matches your style.</p>
+      </div>
+    </section>
+    <section id="shop">
+      <h2>Racket Selection</h2>
+      <div class="product-list">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?fit=crop&w=400&q=80" alt="Wilson Pro Staff 97">
+          <h3>Pro Staff 97</h3>
+          <p>Precision and heritage for advanced play.</p>
+          <span class="new-price">$249</span>
+          <button class="cart-btn" data-id="1">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1485841890310-6a055c88698a?fit=crop&w=400&q=80" alt="Wilson Blade 98">
+          <h3>Blade 98</h3>
+          <p>For the modern aggressive player, ultimate feel.</p>
+          <span class="new-price">$219</span>
+          <button class="cart-btn" data-id="2">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?fit=crop&w=400&q=80" alt="Wilson Clash 100">
+          <h3>Clash 100</h3>
+          <p>Versatility and power in a flexible frame.</p>
+          <span class="new-price">$199</span>
+          <button class="cart-btn" data-id="3">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+    <section id="checkout">
+      <h2>Your Cart</h2>
+      <div class="cart-display">
+        <ul class="cart-items"></ul>
+        <div class="cart-sum"></div>
+        <button id="cart-checkout-btn">Checkout</button>
+        <div id="cart-confirm"></div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>Wilson Tennis Store &mdash; Serving Tennis Lovers. &copy; 2024</p>
+  </footer>
+  <script src="my-wilson-b.js"></script>
+</body>
+</html>

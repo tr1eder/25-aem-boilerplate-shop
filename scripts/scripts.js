@@ -18,6 +18,11 @@ import {
   toClassName,
 } from './aem.js';
 
+import initExperiment from './abtesting-OwaA.js';
+
+// This should be executed as early as possible to populate the body.
+initExperiment();
+
 const AUDIENCES = {
   mobile: () => window.innerWidth < 600,
   desktop: () => window.innerWidth >= 600,
