@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wilson Classic Rackets Shop</title>
+  <link rel="stylesheet" href="page.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=facearea&w=64&h=64&facepad=2&q=80" alt="Wilson Logo" />
+      <h1>Wilson Rackets</h1>
+    </div>
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <button id="cart-btn">
+        🛒 <span id="cart-count">0</span>
+      </button>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <h2>Peak of Performance</h2>
+      <p>Play the best. Premium tennis rackets engineered for excellence and iconic moments on court.</p>
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Tennis Court"/>
+    </section>
+    <section id="shop" class="shop">
+      <h2>Shop Tennis Rackets</h2>
+      <div class="product-list" id="product-list"></div>
+    </section>
+    <section class="about" id="about">
+      <h2>About Wilson</h2>
+      <p>
+        Since 1914, Wilson has set the standard in sports innovation and quality, fueling champions at every level.
+        Discover our heritage rackets, trusted by the icons of the game and now reimagined for you.
+      </p>
+      <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" class="about-img" alt="Wilson Tennis Tradition" />
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Wilson Racket Shop. Inspired by Wilson Sporting Goods.</p>
+  </footer>
+  <div id="cart-modal" class="cart-modal hidden">
+    <div class="cart-content">
+      <button class="close-cart" id="close-cart">&times;</button>
+      <h3>Your Cart</h3>
+      <ul id="cart-items"></ul>
+      <div id="cart-total"></div>
+      <button id="checkout-btn" class="checkout-btn">Checkout</button>
+      <div id="checkout-success" class="checkout-success hidden">Thank you for your purchase!</div>
+    </div>
+  </div>
+  <script src="page.js"></script>
+</body>
+</html>

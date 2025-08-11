@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Unleash Your Game with Wilson</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="page.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+</head>
+
+<body>
+  <header class="hero" aria-label="Hero section: Unleash your game">
+    <img class="hero__image" src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?fm=jpg&q=60&w=1500"
+      srcset="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?fm=jpg&q=60&w=900 900w, https://images.unsplash.com/photo-1554068865-24cecd4e34b8?fm=jpg&q=60&w=1500 1500w, https://images.unsplash.com/photo-1554068865-24cecd4e34b8?fm=jpg&q=60&w=3000 3000w"
+      sizes="(max-width: 900px) 100vw, 1500px"
+      alt="A male tennis player in mid-serve on a clay court, showcasing action and Wilson-style performance." />
+    <div class="hero__content">
+      <h1>Unleash Your Game with Wilson</h1>
+      <p class="hero__subhead">Official gear for aspiring champions. Shop hats, tennis balls, and rackets.</p>
+      <ul class="hero__bullets">
+        <li>Performance-tested by pros</li>
+        <li>Iconic style, modern innovation</li>
+        <li>Shop the essentials</li>
+      </ul>
+      <a href="#feature-grid" class="button button--primary" aria-label="Shop the essentials">Shop Now</a>
+    </div>
+    <nav class="cart-bar" aria-label="Shopping cart">
+      <button class="cart-bar__btn" aria-label="View shopping cart">
+        <span class="material-icons" aria-hidden="true">shopping_cart</span>
+        <span class="cart-bar__count" id="cart-count">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="feature-grid" class="feature-grid" aria-label="Feature grid: hats, balls, and rackets">
+      <h2 class="sr-only">Wilson Product Features</h2>
+      <div class="feature-grid__items">
+        <!-- Racquet & ball -->
+        <div class="feature-grid__item" data-product="racquet_ball">
+          <img src="https://images.unsplash.com/photo-1530915365347-e35b749a0381?fm=jpg&q=60&w=600"
+            srcset="https://images.unsplash.com/photo-1530915365347-e35b749a0381?fm=jpg&q=60&w=400 400w, https://images.unsplash.com/photo-1530915365347-e35b749a0381?fm=jpg&q=60&w=800 800w, https://images.unsplash.com/photo-1530915365347-e35b749a0381?fm=jpg&q=60&w=1200 1200w"
+            sizes="(max-width: 600px) 100vw, 600px" alt="Tennis player holding racquet and ball by the net."
+            class="feature-grid__image" />
+          <h3>Precision performance racquet & ball</h3>
+          <p>Wilson rackets and tennis balls are trusted for pro-level play, quality control, and iconic design. Step up
+            your game with championship-caliber gear.</p>
+          <button class="button button--secondary js-add-to-cart" data-product="racquet_ball">Add to cart</button>
+        </div>
+        <!-- Hat with SVG/icon -->
+        <div class="feature-grid__item" data-product="hat">
+          <div class="feature-grid__image feature-grid__image--hat" aria-label="Tennis hat illustration" role="img">
+            <svg width="80" height="60" viewBox="0 0 80 60" aria-hidden="true" focusable="false">
+              <ellipse cx="40" cy="40" rx="35" ry="15" fill="var(--color-neutral-gray)"
+                stroke="var(--color-charcoal-black)" stroke-width="2" />
+              <rect x="25" y="18" width="30" height="20" rx="10" fill="var(--color-wilson-red)" />
+              <text x="40" y="38" text-anchor="middle" fill="white" font-size="16"
+                font-family="Montserrat, Arial, sans-serif" font-weight="700" dy=".3em">HAT</text>
+            </svg>
+          </div>
+          <h3>Lightweight, breathable tennis hat</h3>
+          <p>Stay cool, stay sharp. Wilson’s hats are built for performance and style—on or off the court.</p>
+          <button class="button button--secondary js-add-to-cart" data-product="hat">Add to cart</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="confirmation-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal__content">
+      <h2 id="modal-title">ADDED TO CART</h2>
+      <button class="button button--modal" id="close-modal" aria-label="Close modal">OK</button>
+    </div>
+  </div>
+
+  <div class="cta-bar" role="complementary" aria-label="Shop call to action">
+    <span class="cta-bar__text">Ready to step up your game?</span>
+    <a href="#feature-grid" class="button button--cta">Shop now</a>
+  </div>
+
+  <script src="page.js"></script>
+</body>
+
+</html>

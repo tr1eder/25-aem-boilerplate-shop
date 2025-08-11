@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wilson Tennis Shop - Version AA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="page.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="https://plus.unsplash.com/premium_photo-1666913667082-c1fecc45275d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Two Tennis Rackets and Balls on Court" class="hero-img">
+    <div class="hero-text">
+      <h1>The Wilson Experience</h1>
+      <p>Discover performance tennis rackets engineered to win. Shop our newest selection and elevate your game!</p>
+    </div>
+  </header>
+  <main>
+    <section class="shop-section">
+      <h2>Shop Tennis Rackets</h2>
+      <div class="racket-grid">
+        <div class="racket-card">
+          <img src="https://plus.unsplash.com/premium_photo-1666913667023-4bfd0f6cff0a?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Wilson Pro Staff" />
+          <h3>Wilson Pro Staff</h3>
+          <p>Precision and power for advanced players.</p>
+          <div class="price">$210</div>
+          <button class="buy-btn" data-product="Wilson Pro Staff" data-price="210">Buy</button>
+        </div>
+        <div class="racket-card">
+          <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Wilson Ultra 100" />
+          <h3>Wilson Ultra 100</h3>
+          <p>Dynamic versatility to cover the whole court.</p>
+          <div class="price">$175</div>
+          <button class="buy-btn" data-product="Wilson Ultra 100" data-price="175">Buy</button>
+        </div>
+      </div>
+    </section>
+    <section class="checkout-section" id="checkout" style="display:none;">
+      <h2>Checkout</h2>
+      <div id="checkout-details"></div>
+      <form id="checkout-form">
+        <label>Name:<input name="name" required></label>
+        <label>Shipping Address:<input name="address" required></label>
+        <label>Email:<input name="email" type="email" required></label>
+        <button type="submit">Confirm Purchase</button>
+      </form>
+      <div id="checkout-success" style="display:none;">
+        <h3>Thank you for your purchase!</h3>
+        <p>Your racket is on its way. We'll send an email confirmation soon.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>Wilson Tennis Shop &copy; 2024 | World-class tennis excellence. Images from Unsplash.</p>
+  </footer>
+  <script src="page.js"></script>
+</body>
+</html>

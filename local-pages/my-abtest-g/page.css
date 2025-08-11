@@ -1,0 +1,215 @@
+body {
+  margin: 0;
+  font-family: "Roboto", Arial, sans-serif;
+  background: #fafafd;
+  color: #222;
+}
+header.hero {
+  position: relative;
+  width: 100vw;
+  min-height: 60vh;
+  background-color: #0d1e34;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.hero-img {
+  width: 100vw;
+  max-height: 60vh;
+  object-fit: cover;
+  opacity: .92;
+}
+.hero-content {
+  position: absolute;
+  left: 7vw;
+  bottom: 11vh;
+  color: #fff;
+  max-width: 40vw;
+  z-index: 2;
+}
+.hero-content h1 {
+  font-size: 3.2rem;
+  line-height: 1.05;
+  margin-bottom: .4em;
+  font-weight: 800;
+  letter-spacing: -.03em;
+}
+.hero-sub {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 1.5em;
+  opacity: .95;
+}
+.cta-primary {
+  background: #ff2437;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  padding: .85em 2.2em;
+  box-shadow: 0 2px 16px -6px #2224;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background .23s;
+}
+.cta-primary:hover {
+  background: #d4001a;
+}
+.end-fade {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 90px;
+  background: linear-gradient(to top, #fafafd 0%, transparent 100%);
+  z-index: 1;
+}
+.category-nav {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+.category-nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  list-style: none;
+  margin: 0;
+  padding: 1.1em 0;
+}
+.category-nav a {
+  color: #204e80;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1em;
+  transition: color .18s;
+}
+.category-nav a:hover {
+  color: #ff2437;
+}
+.athlete-stories {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin: 3em 7vw 2em 7vw;
+}
+.athlete-img {
+  width: 180px;
+  border-radius: 20px;
+  box-shadow: 0 2px 20px -4px #0002;
+}
+.athlete-stories blockquote {
+  font-size: 1.2em;
+  font-style: italic;
+  color: #184070;
+  margin: 0;
+}
+.endorsement-logos {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  margin-left: 2em;
+}
+.endorsement-logos img {
+  width: 40px;
+  border-radius: 8px;
+  margin-right: .4em;
+}
+.endorsement-logos span {
+  font-size: .98em;
+  color: #184070;
+}
+.collections {
+  margin: 2.3em 5vw 2em 5vw;
+}
+.collections h2 {
+  font-size: 2.2em;
+  color: #0d1e34;
+  margin-bottom: 1.2em;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2em;
+}
+.product {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 3px 22px -10px #0001;
+  padding: 1.2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow .24s;
+}
+.product:hover {
+  box-shadow: 0 6px 32px -8px #2223;
+}
+.product img {
+  width: 120px;
+  border-radius: 8px;
+  margin-bottom: .85em;
+}
+.product h3 {
+  margin: 0 0 .4em 0;
+  color: #184070;
+}
+.product p {
+  font-size: 1em;
+  color: #24497c;
+  margin: 0 0 1.2em 0;
+  text-align: center;
+}
+.price {
+  font-size: 1.17em;
+  color: #0d1e34;
+  margin-bottom: .7em;
+  font-weight: 700;
+}
+.shop-btn {
+  background: #184070;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: .6em 1.3em;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 1em;
+  margin-bottom: .2em;
+  transition: background .18s;
+}
+.shop-btn:hover {
+  background: #204e80;
+}
+footer {
+  margin: 4em 0 0 0;
+  padding: 2em 0;
+  background: #f5f6fa;
+  text-align: center;
+  font-size: 0.98em;
+  color: #888;
+}
+footer .heritage h4 {
+  margin-top: 0;
+  font-size: 1.25em;
+  color: #184070;
+}
+footer .social-proof {
+  margin: 1em 0;
+  font-weight: 500;
+  color: #184070;
+}
+footer .site-links a {
+  color: #888;
+  text-decoration: none;
+  margin: 0 .5em;
+}
+footer .site-links a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 900px) {
+  .collections .product-grid { grid-template-columns: 1fr 1fr; }
+  .athlete-stories { flex-direction: column; gap: 1em; }
+}
+@media (max-width: 650px) {
+  .collections .product-grid { grid-template-columns: 1fr; }
+  .hero-content { max-width: 90vw; left: 4vw; }
+  .athlete-img { width: 120px; }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wilson Tennis Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="page.css">
+</head>
+<body>
+  <nav class="top-nav">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Wilson_logo.svg/1280px-Wilson_logo.svg.png" alt="Wilson Brand" class="brand">
+    <span class="store-name">Wilson Tennis Store</span>
+    <span class="cart-icon" id="cart-indicator" title="Checkout"><svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M7 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm10 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zM7.34 15.531l.145.017 9.2-.014a2 2 0 001.913-1.309l2.01-5.381A1 1 0 0019.702 8H7.034l-.94-2.35A1 1 0 005.184 5H2v2h2.236l3.248 8.072a2 2 0 002.085 1.241zm-1.15-7.53l8.358.022 1.764 4.745-8.36-.022zm-1.56 8.97a4 4 0 118 0 4 4 0 01-8 0z" fill="#222"/></svg></span>
+  </nav>
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Gear Up For The Court</h1>
+      <p>Explore our premium selection of pro and junior tennis rackets, with images and details to help you swing with confidence.</p>
+    </div>
+  </header>
+  <main>
+    <section class="product-grid">
+      <div class="product" data-title="Pro Staff 97">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Closeup of Pro Staff 97 Tennis Racket Head" />
+        </div>
+        <div class="product-info">
+          <h2>Pro Staff 97</h2>
+          <div class="tag" style="background:#df202b;">Control</div>
+          <p>
+            Designed for serious competitors seeking precision. Braided-graphite frame, responsive strings, and premium leather grip for ultimate shot placement.<br>
+            <b>Comfort:</b> Firm, precise, classic feel.<br>
+            <b>Power:</b> Medium with high control.<br>
+            <b>Best For:</b> Advanced adults and teens.
+          </p>
+          <div class="prod-footer">
+            <span class="prod-price">$229</span>
+            <button class="buy">Buy</button>
+          </div>
+        </div>
+      </div>
+      <div class="product" data-title="Blade 98">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1502550900787-e956c314a221?auto=format&fit=crop&w=600&q=80" alt="Person Serving with Wilson Blade 98 Racket">
+        </div>
+        <div class="product-info">
+          <h2>Blade 98</h2>
+          <div class="tag" style="background:#80c342;">Spin</div>
+          <p>
+            Experience explosive shots with flexible frame & lively string bed. Light enough for easy maneuvering, powerful for winning points.<br>
+            <b>Comfort:</b> Soft touch grip, less vibration.<br>
+            <b>Power:</b> High and easy.<br>
+            <b>Best For:</b> Growing juniors and all-court players.
+          </p>
+          <div class="prod-footer">
+            <span class="prod-price">$219</span>
+            <button class="buy">Buy</button>
+          </div>
+        </div>
+      </div>
+      <div class="product" data-title="Clash 100 Junior">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80" alt="Child with Wilson Clash 100 Junior Racket" />
+        </div>
+        <div class="product-info">
+          <h2>Clash 100 Junior</h2>
+          <div class="tag" style="background:#05aff2;">Juniors</div>
+          <p>
+            Sized for kids, balanced for fun. Super lightweight, cushioned grip, & flexible frame for easy learning and happy hitting.<br>
+            <b>Comfort:</b> Plush and forgiving.<br>
+            <b>Power:</b> Effortless for beginners.<br>
+            <b>Best For:</b> Kids ages 8–12 and improving juniors.
+          </p>
+          <div class="prod-footer">
+            <span class="prod-price">$109</span>
+            <button class="buy">Buy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="checkout-modal" id="checkout-modal">
+      <div class="checkout-box">
+        <span class="close-modal" id="close-modal">&times;</span>
+        <h2 style="margin-bottom:0.8em;">Checkout</h2>
+        <div class="checkout-summary"></div>
+        <form id="modal-form">
+          <label>
+            Name
+            <input type="text" required>
+          </label>
+          <label>
+            Email
+            <input type="email" required>
+          </label>
+          <label>
+            Address
+            <input type="text" required>
+          </label>
+          <button type="submit" class="primary">Complete Purchase</button>
+        </form>
+        <div class="order-done" style="display:none;">
+          Order placed! Thank you for shopping Wilson.
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <span>© 2024 Wilson Store &mdash; Images: Unsplash</span>
+  </footer>
+  <script src="page.js"></script>
+</body>
+</html>

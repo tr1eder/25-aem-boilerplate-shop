@@ -1,0 +1,9 @@
+Validating: my-abtest-v
+* page.html exists: yes
+* page.css exists: yes
+* page.js exists: yes
+* HTML: Hero copy and alt correct. Shop items: Wilson Pro Staff 97 standard, Wilson Clash 100 (version v) uses alternate description 'Engineered for effortless precision and player-friendly flexibility.' All image src/alt/text pairs aligned to alignment_manifest. Feedback: text-only, SVG icon, copy as-supplied. No invented or unauthorized content.
+* Non-empty CSS: yes
+* Non-empty JS: yes
+* All requirements: met.
+* OK

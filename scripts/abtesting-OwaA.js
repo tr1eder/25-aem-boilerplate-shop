@@ -6,8 +6,8 @@ const EXPERIMENT_STATE = {
 };
 
 const MAP_EXPERIMENT_TO_FILE = {
-  [EXPERIMENT_STATE.CONTROL]: '/local-pages/my-wilson-a',
-  [EXPERIMENT_STATE.VARIANT_A]: '/local-pages/my-wilson-b',
+  [EXPERIMENT_STATE.CONTROL]: '/local-pages/my-abtest-aa',
+  [EXPERIMENT_STATE.VARIANT_A]: '/local-pages/my-abtest-ab',
 };
 
 async function getExperimentState() {
@@ -81,9 +81,9 @@ async function addBody(expState) {
 
   try {
     // Use the existing fetchFile function to get all resources
-    const html = await fetchFile(`${contentPath}.html`);
-    const css = await fetchFile(`${contentPath}.css`);
-    const js = await fetchFile(`${contentPath}.js`);
+    const html = await fetchFile(`${contentPath}/page.html`);
+    const css = await fetchFile(`${contentPath}/page.css`);
+    const js = await fetchFile(`${contentPath}/page.js`);
 
     if (!html || !css || !js) {
       // eslint-disable-next-line no-console

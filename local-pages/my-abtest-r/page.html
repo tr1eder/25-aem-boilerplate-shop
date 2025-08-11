@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Wilson Tennis Rackets</title>
+  <link rel="stylesheet" href="page.css"/>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <h1 class="hero__headline">Play Like a Pro with Wilson</h1>
+      <h2 class="hero__subheadline">Discover the tennis rackets trusted by champions worldwide.</h2>
+      <p class="hero__body">Innovation, precision, and passion—Wilson rackets deliver on every court.</p>
+    </div>
+    <img src="https://images.unsplash.com/photo-1622163642998-1ea32b0bbc67?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGVubmlzJTIwcmFja2V0fGVufDB8fDB8fHww" alt="Premium tennis racket and ball on vibrant blue and green court" class="hero__image" loading="eager"/>
+  </header>
+
+  <main>
+    <section class="shop" aria-labelledby="shop-section-title">
+      <h2 id="shop-section-title">Shop Rackets</h2>
+      <div class="shop__grid">
+
+        <article class="shop__item" data-item-id="blade-98">
+          <img src="https://images.unsplash.com/photo-1542144582-1ba00456b5e3?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHRlbm5pcyUyMHJhY2tldHxlbnwwfHwwfHx8MA%3D%3D" alt="Premium tennis racket and ball at court line" class="shop__image" loading="lazy"/>
+          <div class="shop__details">
+            <h3 class="shop__headline">Wilson Ultra 100</h3>
+            <p class="shop__description">Powerful frame for aggressive baseliners. Enhanced sweet spot and maneuverability for all-court play.</p>
+            <div class="shop__price-add">
+              <span class="shop__price">$239.00</span>
+              <button type="button" class="shop__add-cart" aria-label="Add Wilson Ultra 100 to cart">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="shop__item" data-item-id="ultra-100">
+          <img src="https://images.unsplash.com/photo-1560012057-4372e14c5085?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHRlbm5pcyUyMHJhY2tldHxlbnwwfHwwfHx8MA%3D%3D" alt="Energetic tennis racket and ball action, representative of Wilson Ultra 100" class="shop__image" loading="lazy"/>
+          <div class="shop__details">
+            <h3 class="shop__headline">Wilson Blade 98</h3>
+            <p class="shop__description">Control, comfort, and spin for intermediate and advanced players. 16x19 string pattern for versatility.</p>
+            <div class="shop__price-add">
+              <span class="shop__price">$249.00</span>
+              <button type="button" class="shop__add-cart" aria-label="Add Wilson Blade 98 to cart">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="testimonials" aria-labelledby="testimonials-title">
+      <h2 id="testimonials-title">Trusted By Players</h2>
+      <img src="https://images.unsplash.com/photo-1542144582-1ba00456b5e3?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHRlbm5pcyUyMHJhY2tldHxlbnwwfHwwfHx8MA%3D%3D" alt="Tennis racket and ball on court referencing player feedback" class="testimonials__image" loading="lazy"/>
+      <ul class="testimonials__list">
+        <li class="testimonial">
+          <blockquote>“Best racket I've ever owned—my shots are more consistent and powerful!”</blockquote>
+          <span class="testimonial__name">Taylor G.</span>
+        </li>
+        <li class="testimonial">
+          <blockquote>“Wilson's attention to detail shines through every swing. Highly recommend.”</blockquote>
+          <span class="testimonial__name">Jordan W.</span>
+        </li>
+        <li class="testimonial">
+          <blockquote>“Lightweight, balanced, and perfect for my aggressive baseline game.”</blockquote>
+          <span class="testimonial__name">Casey D.</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <aside class="cart" aria-live="polite">
+    <button type="button" class="cart__toggle" aria-label="View cart" tabindex="0">
+      🛒 Cart (<span class="cart__count">0</span>)
+    </button>
+    <div class="cart__modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <h2>Your Cart</h2>
+      <ul class="cart__items"></ul>
+      <button type="button" class="cart__checkout">Checkout</button>
+      <button type="button" class="cart__close" aria-label="Close cart">Close</button>
+      <div class="cart__confirmation" hidden>
+        <h3>Thank you for your purchase!</h3>
+        <p>This is a mockup checkout for demo purposes only. No payment required.</p>
+      </div>
+    </div>
+  </aside>
+
+  <script src="page.js"></script>
+</body>
+</html>

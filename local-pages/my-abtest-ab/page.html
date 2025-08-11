@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wilson | Unleash Your Potential</title>
+  <link rel="stylesheet" href="page.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="https://images.unsplash.com/photo-1545151414-8a948e1ea54f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHRlbm5pcyUyMHJhY2tldHxlbnwwfHwwfHx8MA%3D%3D" alt="Woman plays tennis on court in active motion, shadow visible." class="hero-image" />
+    <div class="hero-content">
+      <h1>Unleash Your Potential</h1>
+      <p>Play like a pro with Wilson tennis rackets.</p>
+    </div>
+  </header>
+  <main>
+    <section class="shop-grid" aria-label="Shop tennis rackets">
+      <h2>Shop Wilson Rackets</h2>
+      <div class="products">
+        <article class="product-card" data-product="staff">
+          <img src="https://images.unsplash.com/photo-1622163642998-1ea32b0bbc67?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGVubmlzJTIwcmFja2V0fGVufDB8fDB8fHww" alt="Blue tennis racket and yellow ball on blue/green tennis court." />
+          <h3>Pro Staff Elite</h3>
+          <p>Our most popular pro-level racket for advanced play.</p>
+          <span class="price">$229</span>
+          <button class="add-to-cart" data-product-id="staff">Add to Cart</button>
+        </article>
+        <article class="product-card" data-product="ultra">
+          <img src="https://images.unsplash.com/photo-1617883861744-13b534e3b928?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVubmlzJTIwcmFja2V0fGVufDB8fDB8fHww" alt="Yellow and black tennis racket with yellow ball on court." />
+          <h3>Ultra Power</h3>
+          <p>Generate unstoppable speed with cutting-edge design.</p>
+          <span class="price">$199</span>
+          <button class="add-to-cart" data-product-id="ultra">Add to Cart</button>
+        </article>
+      </div>
+    </section>
+    <section class="testimonials">
+      <h2>What Wilson Fans Say</h2>
+      <img src="https://images.unsplash.com/photo-1560012057-4372e14c5085?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0" alt="Tennis racket and hovering ball on blue court; welcoming, product-focused scene."/>
+      <div class="quotes">
+        <blockquote>
+          <p>"My Pro Staff Elite just feels perfect in hand—best control I've ever had."</p>
+          <footer>- Carmen P.</footer>
+        </blockquote>
+        <blockquote>
+          <p>"Ultra Power absolutely elevates my game speed. Fast shipping, too!"</p>
+          <footer>- Mike G.</footer>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+  <button class="cart-icon" aria-label="View shopping cart">
+    <span class="cart-count" id="cart-count">0</span>
+    🛒
+  </button>
+  <div id="cart-flyout" class="cart-flyout" aria-live="polite" aria-label="Shopping cart quickview">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="close-cart" aria-label="Close cart">✕</button>
+    </div>
+    <ul id="cart-items"></ul>
+    <button class="checkout-btn" id="checkout-btn">Checkout</button>
+    <div class="confirmation" id="confirmation" role="status"></div>
+  </div>
+  <script src="page.js"></script>
+</body>
+</html>

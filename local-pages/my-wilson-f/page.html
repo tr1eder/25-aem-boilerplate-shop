@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wilson Urban Rackets Shop</title>
+  <link rel="stylesheet" href="page.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="https://images.unsplash.com/photo-1538688423619-a81d3f23454b?auto=format&fit=facearea&w=64&h=64&facepad=2&q=80" alt="Modern Wilson Logo" />
+      <h1><span>Wilson</span> <span class="urban">Urban</span></h1>
+    </div>
+    <nav>
+      <a href="#shop">Store</a>
+      <a href="#about">Our Story</a>
+      <button id="cart-btn">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="#fff" style="vertical-align:middle;"><path d="M7 20c1.1 0 1.99.9 1.99 2S8.1 24 7 24s-2-.9-2-2 .9-2 2-2zm10 0c1.1 0 1.99.9 1.99 2S18.1 24 17 24s-2-.9-2-2 .9-2 2-2zM7.44 17h9.08c.75 0 1.41-.41 1.74-1.03l3.24-6.18a1 1 0 0 0-.82-1.47H6.21l-.94-2H1V5h2l3.6 7.59-1.35 2.44A2 2 0 0 0 5 17a2 2 0 0 0 2.44 0zm0-2.62L7.82 13h7.36l2.38 4.38c-.17.31-.51.62-.94.62H7.44zm6.36-5a1 1 0 0 0-1.73 0h-1.78a1 1 0 0 0-1.73 0H4.21l.94 2h13.7l.94-2h-3.99z"></path></svg>
+        <span id="cart-count" class="urban"></span>
+      </button>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Urban Energy. Elite Performance.</h2>
+        <p>Conquer the city, rule the court. Rackets built for relentless urban athletes—driven by innovation.</p>
+        <button class="scroll-shop" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Explore Shop</button>
+      </div>
+      <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80" alt="Urban Tennis" />
+    </section>
+    <section id="shop" class="shop">
+      <h2>Gear Up</h2>
+      <div class="product-list" id="product-list"></div>
+    </section>
+    <section class="about" id="about">
+      <h2><span class="urban">Our Story</span></h2>
+      <p>
+        <b>Wilson Urban Series</b> challenges the game with bold design and advanced materials.
+        Made for competitors who thrive on gritty asphalt, bright lights, and boundary-pushing performance.
+      </p>
+      <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" class="about-img" alt="Racket Urban Legacy" />
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Wilson Urban Shop. Concept inspired by Wilson Sporting Goods.</p>
+  </footer>
+  <div id="cart-modal" class="cart-modal hidden">
+    <div class="cart-content">
+      <button class="close-cart" id="close-cart">&times;</button>
+      <h3>Cart</h3>
+      <ul id="cart-items"></ul>
+      <div id="cart-total"></div>
+      <button id="checkout-btn" class="checkout-btn">Checkout</button>
+      <div id="checkout-success" class="checkout-success hidden">Order complete! You're ready to play.</div>
+    </div>
+  </div>
+  <script src="page.js"></script>
+</body>
+</html>

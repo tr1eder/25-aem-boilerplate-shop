@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wilson Tennis Shop (Version G)</title>
+    <link rel="stylesheet" href="page.css">
+</head>
+<body>
+    <header class="hero">
+        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80" alt="Tennis court" class="hero-img">
+        <div class="hero-text">
+            <h1>Wilson Tennis Rackets</h1>
+            <p>Engineered For Champions. Find Your Perfect Racket.</p>
+        </div>
+    </header>
+    <main>
+        <h2 class="section-title">Shop Our Rackets</h2>
+        <div class="racket-shop">
+            <div class="racket-card" data-id="prostaff">
+                <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=600&q=80" alt="Pro Staff Tennis Racket">
+                <h3>Pro Staff 97 v14</h3>
+                <p>Classic precision and feel. For the experienced player.</p>
+                <div class="racket-footer">
+                    <div class="price">$249.00</div>
+                    <button class="buy-btn">Buy</button>
+                </div>
+            </div>
+            <div class="racket-card" data-id="blade">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Blade Tennis Racket">
+                <h3>Blade 98 v8</h3>
+                <p>Control and stability for aggressive competitors.</p>
+                <div class="racket-footer">
+                    <div class="price">$219.00</div>
+                    <button class="buy-btn">Buy</button>
+                </div>
+            </div>
+            <div class="racket-card" data-id="clash">
+                <img src="https://images.unsplash.com/photo-1483695028939-5bb13f8643ab?auto=format&fit=crop&w=600&q=80" alt="Clash Tennis Racket">
+                <h3>Clash 100 v2</h3>
+                <p>Revolutionary flex for easy power and comfort.</p>
+                <div class="racket-footer">
+                    <div class="price">$199.00</div>
+                    <button class="buy-btn">Buy</button>
+                </div>
+            </div>
+            <div class="racket-card" data-id="ultra">
+                <img src="https://images.unsplash.com/photo-1457301547464-91995555cd25?auto=format&fit=crop&w=600&q=80" alt="Ultra Tennis Racket">
+                <h3>Ultra 100 v4</h3>
+                <p>Effortless power for all-court versatility.</p>
+                <div class="racket-footer">
+                    <div class="price">$179.00</div>
+                    <button class="buy-btn">Buy</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>© 2024 Wilson Tennis (Inspired Demo)</div>
+    </footer>
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <span class="close-cart">&times;</span>
+            <h2>Your Cart</h2>
+            <div id="cart-items"></div>
+            <div id="cart-total"></div>
+            <button id="checkout-btn" class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+    <div id="checkout-modal" class="cart-modal">
+        <div class="cart-content">
+            <span class="close-cart">&times;</span>
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <label>
+                    Name
+                    <input type="text" required>
+                </label>
+                <label>
+                    Email
+                    <input type="email" required>
+                </label>
+                <label>
+                    Address
+                    <input type="text" required>
+                </label>
+                <button type="submit" class="checkout-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+    <script src="page.js"></script>
+</body>
+</html>

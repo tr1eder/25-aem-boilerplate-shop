@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wilson Shop — Modern Tennis Gear (Version H)</title>
+    <link rel="stylesheet" href="page.css">
+</head>
+<body>
+    <header class="hero">
+        <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80" alt="Tennis players" class="hero-bg">
+        <div class="hero-row">
+            <div class="hero-content">
+                <h1>Play Modern. Go Wilson.</h1>
+                <p class="tagline">Smash Every Match With The Right Racket.</p>
+                <a href="#shop" class="shop-link">Shop Rackets Below</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=400&q=80" class="hero-feature-img" alt="Tennis action">
+        </div>
+    </header>
+    <main>
+        <h2 class="section-title">Featured Tennis Rackets</h2>
+        <div class="racket-grid" id="shop">
+            <div class="racket-tile" data-id="blade">
+                <img src="https://images.unsplash.com/photo-1457301547464-91995555cd25?auto=format&fit=crop&w=600&q=80" alt="Blade Tennis Racket">
+                <h3>Blade 98 v8</h3>
+                <p>Best for precise strokes and modern game speed.</p>
+                <div class="racket-purchase-row">
+                    <span class="price">$219.00</span>
+                    <button class="buy-btn">Buy</button>
+                </div>
+            </div>
+            <div class="racket-tile" data-id="ultra">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Ultra Tennis Racket">
+                <h3>Ultra 100 v4</h3>
+                <p>Lightweight power and smooth playability for all levels.</p>
+                <div class="racket-purchase-row">
+                    <span class="price">$179.00</span>
+                    <button class="buy-btn">Buy</button>
+                </div>
+            </div>
+            <div class="racket-tile" data-id="prostaff">
+                <img src="https://images.unsplash.com/photo-1483695028939-5bb13f8643ab?auto=format&fit=crop&w=600&q=80" alt="Pro Staff Tennis Racket">
+                <h3>Pro Staff 97 v14</h3>
+                <p>Heritage feel, ultimate control and iconic design.</p>
+                <div class="racket-purchase-row">
+                    <span class="price">$249.00</span>
+                    <button class="buy-btn">Buy</button>
+                </div>
+            </div>
+            <div class="racket-tile" data-id="clash">
+                <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80" alt="Clash Tennis Racket">
+                <h3>Clash 100 v2</h3>
+                <p>Ultimate comfort and flexible response for any player.</p>
+                <div class="racket-purchase-row">
+                    <span class="price">$199.00</span>
+                    <button class="buy-btn">Buy</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>Demo inspired by Wilson.com — Not an official store | © 2024</div>
+    </footer>
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <span class="close-cart">&times;</span>
+            <h2>Cart</h2>
+            <div id="cart-items"></div>
+            <div id="cart-total"></div>
+            <button id="checkout-btn" class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+    <div id="checkout-modal" class="cart-modal">
+        <div class="cart-content">
+            <span class="close-cart">&times;</span>
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <label>
+                    Name
+                    <input type="text" required>
+                </label>
+                <label>
+                    Email
+                    <input type="email" required>
+                </label>
+                <label>
+                    Address
+                    <input type="text" required>
+                </label>
+                <button type="submit" class="checkout-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+    <script src="page.js"></script>
+</body>
+</html>
