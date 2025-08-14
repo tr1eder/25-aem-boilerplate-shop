@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wilson — Champion's Edge Tennis Rackets</title>
+  <link href="https://fonts.googleapis.com/css?family=Oswald:700|Open+Sans:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="page.css" />
+</head>
+
+<body>
+  <header>
+    <nav aria-label="Primary">
+      <a class="brand" href="#"><span aria-label="Wilson logo"
+          style="color:var(--brand-red);font-weight:700;letter-spacing:1px;font-family:Oswald,sans-serif;">Wilson</span></a>
+      <ul class="menu">
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+      </ul>
+      <button id="cart-toggle" aria-label="View cart" class="carticon"><span>🛒</span><span class="cart-count"
+          aria-live="polite">0</span></button>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1530915365347-e35b749a0381?fm=jpg&q=60&w=3000"
+          alt="Tennis racket and ball on a clay court viewed through the net" />
+      </div>
+      <div class="hero-content">
+        <h1>Find Your Champion’s Edge</h1>
+        <h2>Wilson tennis rackets – Unrivaled precision, legendary performance.</h2>
+        <ul>
+          <li>Tour-inspired design</li>
+          <li>Used by Grand Slam winners</li>
+        </ul>
+        <p>Join a community of athletes who trust Wilson for power, control, and confidence in every shot.</p>
+      </div>
+    </section>
+
+    <section id="shop" class="products">
+      <h2>Shop Featured Rackets</h2>
+      <div class="product-grid">
+        <article class="product-card">
+          <img src="https://images.unsplash.com/photo-1560012057-4372e14c5085?fm=jpg&q=60&w=3000"
+            alt="Tennis racket with green/yellow handle and ball on blue court" />
+          <div class="product-info">
+            <h3>Wilson Pro Staff 97 V14</h3>
+            <p>Iconic feel and tour-level precision, crafted for players who demand control.</p>
+            <p class="price">$279</p>
+            <button class="add-cart" data-name="Wilson Pro Staff 97 V14" data-price="279"
+              aria-label="Add Wilson Pro Staff 97 V14 to cart">Add to cart</button>
+          </div>
+        </article>
+        <article class="product-card">
+          <img src="https://images.unsplash.com/photo-1559389768-76aa70aa515d?fm=jpg&q=60&w=3000"
+            alt="Tennis racket and ball on rough court surface" />
+          <div class="product-info">
+            <h3>Wilson Ultra 100 V4</h3>
+            <p>Spin Redefined – Best for aggressive baseliners needing whip-fast swings.</p>
+            <p class="price">$229</p>
+            <button class="add-cart" data-name="Wilson Ultra 100 V4" data-price="229"
+              aria-label="Add Wilson Ultra 100 V4 to cart">Add to cart</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+      <h2>What Our Players Say</h2>
+      <div class="testimonial-carousel">
+        <div class="testimonial-image">
+          <img src="https://images.unsplash.com/photo-1558365849-6ebd8b0454b2?fm=jpg&q=60&w=3000"
+            alt="Tennis ball reflecting on wet tennis court surface." />
+        </div>
+        <blockquote>
+          <p>"The Pro Staff feels like an extension of my arm. My game’s never felt sharper!"</p>
+          <footer>— Jordan F.</footer>
+        </blockquote>
+        <blockquote>
+          <p>"Switching to Wilson transformed my baseline power. The Ultra is an absolute game-changer."</p>
+          <footer>— Becca R.</footer>
+        </blockquote>
+      </div>
+    </section>
+    <div id="cart-modal" aria-label="Shopping cart" aria-modal="true" role="dialog" class="cart-modal" hidden>
+      <div class="cart-content">
+        <h2>Your Cart</h2>
+        <ul id="cart-list"></ul>
+        <button id="checkout" class="cart-checkout">Proceed to Checkout</button>
+        <button id="close-cart" class="cart-close">Close</button>
+      </div>
+    </div>
+    <div id="checkout-modal" aria-label="Checkout confirmation" aria-modal="true" role="dialog" class="checkout-modal"
+      hidden>
+      <div class="checkout-content">
+        <h2>Order Confirmation</h2>
+        <p>Thank you for shopping Wilson's Champion Edge rackets!</p>
+        <p>This is a demo: no payment has been processed.</p>
+        <button id="close-checkout" class="checkout-close">Got it</button>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <small>© 2024 Wilson — Champion's Edge Tennis Rackets. All rights reserved.</small>
+  </footer>
+
+  <script src="page.js"></script>
+</body>
+
+</html>
