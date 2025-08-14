@@ -10,23 +10,23 @@ const closeCartBtn = document.querySelector('.close-cart');
 let cart = {};
 
 function updateCartCount() {
-  const count = Object.values(cart).reduce((a,b)=>a+b,0);
+  const count = Object.values(cart).reduce((a, b) => a + b, 0);
   cartCount.textContent = count;
 }
 
 function renderCartItems() {
   cartItemsList.innerHTML = '';
   let total = 0;
-  for (const [id, qty] of Object.entries(cart)) {
-    let name = id === 'staff' ? 'Pro Staff Elite' : 'Ultra Power';
-    let price = id === 'staff' ? 229 : 199;
-    let item = document.createElement('li');
-    item.innerHTML = `<span>${name}</span> <span>×${qty}</span> <span>$${(price*qty).toFixed(0)}</span>`;
+  Object.entries(cart).forEach(([id, qty]) => {
+    const name = id === 'staff' ? 'Pro Staff Elite' : 'Ultra Power';
+    const price = id === 'staff' ? 229 : 199;
+    const item = document.createElement('li');
+    item.innerHTML = `<span>${name}</span> <span>×${qty}</span> <span>$${(price * qty).toFixed(0)}</span>`;
     cartItemsList.appendChild(item);
     total += price * qty;
-  }
+  });
   if (total > 0) {
-    let tot = document.createElement('li');
+    const tot = document.createElement('li');
     tot.innerHTML = `<strong>Total</strong> <strong></strong> <strong>$${total}</strong>`;
     cartItemsList.appendChild(tot);
   }
@@ -46,10 +46,10 @@ cartIcon.addEventListener('click', () => {
 closeCartBtn.addEventListener('click', hideCart);
 
 const addBtns = document.querySelectorAll('.add-to-cart');
-addBtns.forEach(btn => {
-  btn.addEventListener('click', function() {
+addBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
     const pid = btn.dataset.productId;
-    cart[pid] = (cart[pid]||0)+1;
+    cart[pid] = (cart[pid] || 0) + 1;
     updateCartCount();
     showCart();
     renderCartItems();
@@ -57,16 +57,16 @@ addBtns.forEach(btn => {
   });
 });
 
-cartFlyout.addEventListener('keydown', function(e) {
-  if (e.key==='Escape') hideCart();
+cartFlyout.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') hideCart();
 });
 
-checkoutBtn.addEventListener('click', function() {
-  if (Object.keys(cart).length===0) {
+checkoutBtn.addEventListener('click', () => {
+  if (Object.keys(cart).length === 0) {
     confirmationDiv.textContent = 'No items in cart.';
     return;
   }
-  confirmationDiv.textContent = 'Thank you! This is a mockup checkout—no payment processed.';
+  confirmationDiv.textContent = 'This is a mockup website, thank you for your participation.';
   cart = {};
   renderCartItems();
   updateCartCount();
@@ -74,10 +74,10 @@ checkoutBtn.addEventListener('click', function() {
 
 // Quick view on hover desktop/cart icon
 cartIcon.addEventListener('mouseenter', () => {
-  if (window.innerWidth>800 && Object.keys(cart).length) showCart();
+  if (window.innerWidth > 800 && Object.keys(cart).length) showCart();
 });
 cartIcon.addEventListener('mouseleave', () => {
-  if (window.innerWidth>800) hideCart();
+  if (window.innerWidth > 800) hideCart();
 });
 
 updateCartCount();

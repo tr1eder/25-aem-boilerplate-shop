@@ -29,7 +29,7 @@
           <h3>Pro Staff Elite</h3>
           <p>Our most popular pro-level racket for advanced play.</p>
           <span class="price">$229</span>
-          <button class="add-to-cart-staff class1" data-product-id="staff">Add to Cart</button>
+          <button class="add-to-cart add-to-cart-staff class1" data-product-id="staff">Add to Cart</button>
         </article>
         <article class="product-card" data-product="ultra">
           <img
@@ -38,7 +38,7 @@
           <h3>Ultra Power</h3>
           <p>Generate unstoppable speed with cutting-edge design.</p>
           <span class="price">$199</span>
-          <button class="add-to-cart-ultra class2" data-product-id="ultra">Add to Cart</button>
+          <button class="add-to-cart add-to-cart-ultra class2" data-product-id="ultra">Add to Cart</button>
         </article>
       </div>
     </section>
@@ -57,20 +57,20 @@
         </blockquote>
       </div>
     </section>
-  </main>
-  <button class="cart-icon" aria-label="View shopping cart">
-    <span class="cart-count" id="cart-count">0</span>
-    🛒
-  </button>
-  <div id="cart-flyout" class="cart-flyout" aria-live="polite" aria-label="Shopping cart quickview">
-    <div class="cart-header">
-      <h3>Your Cart</h3>
-      <button class="close-cart" aria-label="Close cart">✕</button>
+    <button class="cart-icon" aria-label="View shopping cart">
+      <span class="cart-count" id="cart-count">0</span>
+      🛒
+    </button>
+    <div id="cart-flyout" class="cart-flyout" aria-live="polite" aria-label="Shopping cart quickview">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="close-cart" aria-label="Close cart">✕</button>
+      </div>
+      <ul id="cart-items"></ul>
+      <button class="checkout-btn" id="checkout-btn">Checkout</button>
+      <div class="confirmation" id="confirmation" role="status"></div>
     </div>
-    <ul id="cart-items"></ul>
-    <button class="checkout-btn" id="checkout-btn">Checkout</button>
-    <div class="confirmation" id="confirmation" role="status"></div>
-  </div>
+  </main>
   <script src="page.js"></script>
 </body>
 

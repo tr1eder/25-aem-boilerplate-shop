@@ -1,0 +1,1 @@
+// JS for shopping cart modal/drawer: add-to-cart, cart toggle (hover/click), update, checkout, confirmation. Accurate product names and prices, and version B description for Blade 98. No placeholder text, WCAG-compliant focus handling.

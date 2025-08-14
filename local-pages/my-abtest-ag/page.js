@@ -1,0 +1,1 @@
+// JS to support shopping cart modal/drawer pattern: add-to-cart, cart interaction (hover/click), show/hide modal, update contents, checkout with confirmation message, accessibility hooks; actual product names and prices from manifest; ensure no placeholder text appears and all text/copy matches manifest.
