@@ -6,8 +6,8 @@ const EXPERIMENT_STATE = {
 };
 
 const MAP_EXPERIMENT_TO_FILE = {
-  [EXPERIMENT_STATE.CONTROL]: '/local-pages/my-abtest-aa',
-  [EXPERIMENT_STATE.VARIANT_A]: '/local-pages/my-abtest-ab',
+  [EXPERIMENT_STATE.CONTROL]: '/local-pages/my-abtest-ab',
+  [EXPERIMENT_STATE.VARIANT_A]: '/local-pages/my-abtest-ac',
 };
 
 async function getExperimentState() {
