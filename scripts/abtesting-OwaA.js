@@ -6,8 +6,8 @@ const EXPERIMENT_STATE = {
 };
 
 const MAP_EXPERIMENT_TO_FILE = {
-  [EXPERIMENT_STATE.CONTROL]: '/local-pages/my-abtest-ab',
-  [EXPERIMENT_STATE.VARIANT_A]: '/local-pages/my-abtest-ac',
+  [EXPERIMENT_STATE.CONTROL]: '/local-pages/wilson-abtest-h',
+  [EXPERIMENT_STATE.VARIANT_A]: '/local-pages/wilson-abtest-h',
 };
 
 async function getExperimentState() {
@@ -53,15 +53,17 @@ async function getExperimentState() {
   return EXPERIMENT_STATE.UNKNOWN;
 }
 
-async function fetchFile(filePath) {
+async function fetchFile(filePath, optional = false) {
   try {
     const response = await fetch(filePath);
     if (response.ok) {
       return response.text();
     }
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(`Failed to fetch file at ${filePath}`, error);
+    if (!optional) {
+      // eslint-disable-next-line no-console
+      console.error(`Failed to fetch file at ${filePath}`, error);
+    }
   }
   return null;
 }
@@ -82,40 +84,63 @@ async function addBody(expState) {
   try {
     // Use the existing fetchFile function to get all resources
     const html = await fetchFile(`${contentPath}/page.html`);
-    const css = await fetchFile(`${contentPath}/page.css`);
-    const js = await fetchFile(`${contentPath}/page.js`);
+    const css = await fetchFile(`${contentPath}/page.css`, true);
+    const js = await fetchFile(`${contentPath}/page.js`, true);
 
-    if (!html || !css || !js) {
+    if (!html) {
       // eslint-disable-next-line no-console
-      console.error('Failed to load one or more experiment resources.');
+      console.error('Failed to load page.html - this is required.');
       return;
     }
 
     // Remove all existing style and link tags to ensure a clean slate
     document.head.querySelectorAll('style, link[rel="stylesheet"]').forEach((el) => el.remove());
 
-    // Apply all CSS by creating a new style tag
-    const style = document.createElement('style');
-    style.textContent = css;
-    document.head.appendChild(style);
+    // Apply CSS if available
+    if (css) {
+      const style = document.createElement('style');
+      style.textContent = css;
+      document.head.appendChild(style);
+    }
 
-    // Replace inner HTML of header, main, and footer
+    // Parse the HTML document
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
 
-    const sections = ['header', 'main', 'footer'];
-    sections.forEach((selector) => {
-      const sourceElement = doc.querySelector(selector);
+    // Copy head elements in order: link, script, style
+    const headElements = ['link', 'script', 'style'];
+    headElements.forEach((tagName) => {
+      doc.head.querySelectorAll(tagName).forEach((element) => {
+        document.head.appendChild(element.cloneNode(true));
+      });
+    });
+
+    // 1. Delete existing header, main, footer elements completely
+    const elementsToDelete = ['header', 'main', 'footer'];
+    elementsToDelete.forEach((selector) => {
       const targetElement = document.querySelector(selector);
-      if (sourceElement && targetElement) {
-        targetElement.innerHTML = sourceElement.innerHTML;
+      if (targetElement) {
+        targetElement.remove();
       }
     });
 
-    // Execute the script by creating and appending a script tag
-    const script = document.createElement('script');
-    script.textContent = js;
-    document.body.appendChild(script);
+    // 2. Combine CSS classes from current body and fetched body
+    const currentBodyClasses = Array.from(document.body.classList);
+    const fetchedBodyClasses = Array.from(doc.body.classList);
+    const combinedClasses = [...new Set([...currentBodyClasses, ...fetchedBodyClasses])];
+    document.body.className = combinedClasses.join(' ');
+
+    // 3. Add entire body content from fetched HTML at the end of DOM
+    Array.from(doc.body.children).forEach((element) => {
+      document.body.appendChild(element.cloneNode(true));
+    });
+
+    // Execute external JS if available
+    if (js) {
+      const script = document.createElement('script');
+      script.textContent = js;
+      document.body.appendChild(script);
+    }
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error('Error applying experiment content:', e);
