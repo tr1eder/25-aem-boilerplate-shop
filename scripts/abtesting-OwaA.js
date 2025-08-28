@@ -6,8 +6,8 @@ const EXPERIMENT_STATE = {
 };
 
 const MAP_EXPERIMENT_TO_FILE = {
-  [EXPERIMENT_STATE.CONTROL]: '/local-pages/wilson-abtest-h',
-  [EXPERIMENT_STATE.VARIANT_A]: '/local-pages/wilson-abtest-h',
+  [EXPERIMENT_STATE.CONTROL]: '/local-pages/wilson-abtest-sm-a',
+  [EXPERIMENT_STATE.VARIANT_A]: '/local-pages/wilson-abtest-sm-c',
 };
 
 async function getExperimentState() {
@@ -141,6 +141,60 @@ async function addBody(expState) {
       script.textContent = js;
       document.body.appendChild(script);
     }
+
+    // Force OneTrust to reinitialize after content injection
+    setTimeout(() => {
+      // eslint-disable-next-line no-console
+      console.log('Attempting to reinitialize OneTrust...');
+
+      // Clear any existing OneTrust state
+      if (window.OneTrust) {
+        delete window.OneTrust;
+      }
+      if (window.OptanonWrapper) {
+        delete window.OptanonWrapper;
+      }
+
+      // Find and re-execute OneTrust script
+      const oneTrustScript = document.querySelector('script[src*="oneTrust"]');
+      if (oneTrustScript) {
+        // eslint-disable-next-line no-console
+        console.log('Found OneTrust script, reloading...');
+
+        // Create a new script element to force re-execution
+        const newScript = document.createElement('script');
+        newScript.src = oneTrustScript.src;
+        newScript.setAttribute('data-domain-script', oneTrustScript.getAttribute('data-domain-script'));
+        newScript.setAttribute('data-document-language', 'true');
+        newScript.type = 'text/javascript';
+
+        // Remove old script and add new one
+        oneTrustScript.remove();
+        document.head.appendChild(newScript);
+
+        // Wait for script to load and initialize
+        newScript.onload = () => {
+          setTimeout(() => {
+            if (window.OneTrust) {
+              // eslint-disable-next-line no-console
+              console.log('OneTrust reloaded, forcing banner display');
+              try {
+                // Force show the banner
+                window.OneTrust.NoticeApi.Loaded.then(() => {
+                  window.OneTrust.NoticeApi.LoadNotice();
+                });
+              } catch (error) {
+                // eslint-disable-next-line no-console
+                console.error('Error forcing OneTrust banner:', error);
+              }
+            }
+          }, 1000);
+        };
+      } else {
+        // eslint-disable-next-line no-console
+        console.log('OneTrust script not found');
+      }
+    }, 1000);
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error('Error applying experiment content:', e);
