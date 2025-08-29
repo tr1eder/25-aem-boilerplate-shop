@@ -2,12 +2,14 @@ const EXPERIMENT_STATE = {
   NONE: 'none',
   CONTROL: 'control',
   VARIANT_A: 'variant-a',
+  VARIANT_B: 'variant-b',
   UNKNOWN: 'unknown',
 };
 
 const MAP_EXPERIMENT_TO_FILE = {
-  [EXPERIMENT_STATE.CONTROL]: '/local-pages/wilson-abtest-sm-a',
-  [EXPERIMENT_STATE.VARIANT_A]: '/local-pages/wilson-abtest-sm-c',
+  [EXPERIMENT_STATE.CONTROL]: '/local-pages/wilson-abtest-sm-ba',
+  [EXPERIMENT_STATE.VARIANT_A]: '/local-pages/wilson-abtest-sm-co',
+  [EXPERIMENT_STATE.VARIANT_B]: '/local-pages/wilson-abtest-sm-bo',
 };
 
 async function getExperimentState() {
@@ -40,6 +42,7 @@ async function getExperimentState() {
   const isExperiment = document.body.classList.contains('experiment-operator-with-an-attitude');
   const isControl = document.body.classList.contains('variant-control');
   const isVariantA = document.body.classList.contains('variant-challenger-1');
+  const isVariantB = document.body.classList.contains('variant-challenger-2');
 
   if (!isExperiment) {
     return EXPERIMENT_STATE.NONE;
@@ -49,6 +52,9 @@ async function getExperimentState() {
   }
   if (isVariantA) {
     return EXPERIMENT_STATE.VARIANT_A;
+  }
+  if (isVariantB) {
+    return EXPERIMENT_STATE.VARIANT_B;
   }
   return EXPERIMENT_STATE.UNKNOWN;
 }
@@ -67,6 +73,64 @@ async function fetchFile(filePath, optional = false) {
   }
   return null;
 }
+
+// // Add this function to your abtesting-OwaA.js
+// function executeScriptsFromElement(element) {
+//   const scripts = element.querySelectorAll('script');
+//   scripts.forEach((script) => {
+//     const newScript = document.createElement('script');
+
+//     if (script.src) {
+//       // External script
+//       newScript.src = script.src;
+//       newScript.async = script.async || false;
+//     } else {
+//       // Inline script
+//       newScript.textContent = script.textContent;
+//     }
+
+//     // Copy any attributes
+//     Array.from(script.attributes).forEach((attr) => {
+//       if (attr.name !== 'src') {
+//         newScript.setAttribute(attr.name, attr.value);
+//       }
+//     });
+
+//     document.head.appendChild(newScript);
+
+//     // Remove the original script to avoid duplication
+//     script.remove();
+//   });
+// }
+
+// function executeAllScripts(doc) {
+//   const scripts = doc.querySelectorAll('script');
+
+//   scripts.forEach((originalScript, index) => {
+//     const newScript = document.createElement('script');
+
+//     // Copy all attributes
+//     Array.from(originalScript.attributes).forEach((attr) => {
+//       newScript.setAttribute(attr.name, attr.value);
+//     });
+
+//     if (originalScript.src) {
+//       // External script - load and execute
+//       newScript.onload = () => {
+//         console.log(`External script ${index} loaded`);
+//       };
+//     } else {
+//       // Inline script - copy content
+//       newScript.textContent = originalScript.textContent;
+//     }
+
+//     // Append to head or body depending on original location
+//     const targetParent = originalScript.closest('head') ? document.head : document.body;
+//     targetParent.appendChild(newScript);
+
+//     console.log(`Script ${index} executed`);
+//   });
+// }
 
 /**
  * Asynchronously fetches HTML content for a given experiment state and
@@ -107,6 +171,10 @@ async function addBody(expState) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
 
+    // Execute scripts from the parsed document before adding to DOM
+    // executeScriptsFromElement(doc);
+    // executeAllScripts(doc);
+
     // Copy head elements in order: link, script, style
     const headElements = ['link', 'script', 'style'];
     headElements.forEach((tagName) => {
@@ -135,66 +203,39 @@ async function addBody(expState) {
       document.body.appendChild(element.cloneNode(true));
     });
 
+    // if (window.OneTrust) {
+    //   delete window.OneTrust;
+    //   console.log('OneTrust deleted');
+    // }
+    // if (window.OptanonWrapper) {
+    //   delete window.OptanonWrapper;
+    //   console.log('OptanonWrapper deleted');
+    // }
+
+    // MANUALLY EXECUTE SCRIPTS (this is the key part)
+    const scripts = document.querySelectorAll('script');
+    scripts.forEach((script) => {
+      if (!script.src && script.textContent) {
+        // Inline script - execute the code
+        const newScript = document.createElement('script');
+        newScript.textContent = script.textContent;
+        document.head.appendChild(newScript);
+        // script.remove(); // Remove the non-executing copy
+      }
+      if (script.src) {
+        // External script - create a new script element
+        const newScript = document.createElement('script');
+        newScript.src = script.src;
+        document.head.appendChild(newScript);
+      }
+    });
+
     // Execute external JS if available
     if (js) {
       const script = document.createElement('script');
       script.textContent = js;
       document.body.appendChild(script);
     }
-
-    // Force OneTrust to reinitialize after content injection
-    setTimeout(() => {
-      // eslint-disable-next-line no-console
-      console.log('Attempting to reinitialize OneTrust...');
-
-      // Clear any existing OneTrust state
-      if (window.OneTrust) {
-        delete window.OneTrust;
-      }
-      if (window.OptanonWrapper) {
-        delete window.OptanonWrapper;
-      }
-
-      // Find and re-execute OneTrust script
-      const oneTrustScript = document.querySelector('script[src*="oneTrust"]');
-      if (oneTrustScript) {
-        // eslint-disable-next-line no-console
-        console.log('Found OneTrust script, reloading...');
-
-        // Create a new script element to force re-execution
-        const newScript = document.createElement('script');
-        newScript.src = oneTrustScript.src;
-        newScript.setAttribute('data-domain-script', oneTrustScript.getAttribute('data-domain-script'));
-        newScript.setAttribute('data-document-language', 'true');
-        newScript.type = 'text/javascript';
-
-        // Remove old script and add new one
-        oneTrustScript.remove();
-        document.head.appendChild(newScript);
-
-        // Wait for script to load and initialize
-        newScript.onload = () => {
-          setTimeout(() => {
-            if (window.OneTrust) {
-              // eslint-disable-next-line no-console
-              console.log('OneTrust reloaded, forcing banner display');
-              try {
-                // Force show the banner
-                window.OneTrust.NoticeApi.Loaded.then(() => {
-                  window.OneTrust.NoticeApi.LoadNotice();
-                });
-              } catch (error) {
-                // eslint-disable-next-line no-console
-                console.error('Error forcing OneTrust banner:', error);
-              }
-            }
-          }, 1000);
-        };
-      } else {
-        // eslint-disable-next-line no-console
-        console.log('OneTrust script not found');
-      }
-    }, 1000);
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error('Error applying experiment content:', e);

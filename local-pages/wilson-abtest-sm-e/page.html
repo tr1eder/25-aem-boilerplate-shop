@@ -12010,6 +12010,49 @@
   <script nonce="default-nonce">_satellite["_runScript22"](function (event, target, Promise) {
       if (adroll_adv_id = "L6BJ4VHWURADZFBDXJI5YB", adroll_pix_id = "JQGL4ZJEDJHI5BCP3UUY44", adroll_version = "2.0", function (e, r, a, l, o) { e.__adroll_loaded = !0, e.adroll = e.adroll || [], e.adroll.f = ["setProperties", "identify", "track"]; var t = "https://s.adroll.com/j/" + adroll_adv_id + "/roundtrip.js"; for (o = 0; o < e.adroll.f.length; o++)e.adroll[e.adroll.f[o]] = e.adroll[e.adroll.f[o]] || function (r) { return function () { e.adroll.push([r, arguments]) } }(e.adroll.f[o]); a = r.createElement("script"), l = r.getElementsByTagName("script")[0], a.async = 1, a.src = t, l.parentNode.insertBefore(a, l) }(window, document), adroll.track("pageView"), "order-confirmation-page" == _satellite.getVar("Page | Page Type")) try { adroll.track("pageView", { segment_name: "396e6f4e", conversion_value: _satellite.getVar("Transaction | Revenue").toFixed(2), currency: "USD" }) } catch (e) { }
     });</script>
+
+  <script>
+    console.log('Banner styling script loaded');
+
+    // Simple approach - just center what's there
+    function applyBannerStyling() {
+      console.log('Attempting to style banner...');
+
+      function waitForElement(selector, callback) {
+        const existingElement = document.getElementById(selector);
+        if (existingElement) {
+          callback(existingElement);
+          return;
+        }
+
+        const observer = new MutationObserver((mutations) => {
+          const element = document.getElementById(selector);
+          if (element) {
+            observer.disconnect();
+            callback(element);
+          }
+        });
+
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+      }
+
+      waitForElement('onetrust-banner-sdk', (banner) => {
+        console.log('Found banner:', banner);
+        banner.style.position = 'absolute';
+        banner.style.top = '50%';
+        banner.style.left = '50%';
+        banner.style.transform = 'translate(-50%, -50%)';
+        banner.style.bottom = 'auto';
+        console.log('Banner styled');
+      });
+    }
+
+    applyBannerStyling()
+  </script>
+
 </body>
 
 </html>
